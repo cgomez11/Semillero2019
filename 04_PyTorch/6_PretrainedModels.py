@@ -13,6 +13,7 @@ import torch.utils.model_zoo as model_zoo
 from torchvision import datasets, transforms, models
 
 RESNET_101 = 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth'
+RESNET_18 = 'https://download.pytorch.org/models/resnet18-5c106cde.pth'
 
 parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
 parser.add_argument('--batch-size', type=int, default=64, metavar='N',
@@ -83,6 +84,10 @@ sd_model['conv1.weight'] = torch.mean(sd_cp_model['conv1.weight'], dim = 1, keep
 # update state_dict
 model.load_state_dict(sd_model)
 
+# required_grad attribute 
+for param in model.parameters():
+    param.requires_grad = True
+
 if args.cuda:
     model.cuda()
 
@@ -93,7 +98,7 @@ if osp.exists(args.save):
         model.load_state_dict(state)
         load_model = True
 else:
-    state = model_zoo.load_url(RESNET_101)
+    state = model_zoo.load_url(RESNET_18)
     state = {x: state[x] for x in state if not x.startswith('fc')}
     model_state = model.state_dict()
     model_state.update(state)
