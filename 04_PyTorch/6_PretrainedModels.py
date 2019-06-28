@@ -65,13 +65,23 @@ test_loader = torch.utils.data.DataLoader(
     batch_size=args.batch_size, shuffle=True, **kwargs)
 
 
-model = models.resnet101(num_classes=10)
+model = models.resnet18(num_classes=10)
+cp_model = copy.deepcopy(model)
 # model + enter: visualize the model
 
 # number of channels of MNIST data is 1. Pretrained models on
-# inputs with 3 channels. Adjust the weights of the pretrained
-# model
+# inputs with 3 channels. 
+# change the number of input channels of the first conv layer
+model.conv1 = nn.Conv2d(1, 64, kernel_size=(7,7), stride=(2, 2), padding=(3, 3), bias=False)
 
+# average the weights over the channel dimension
+# define state_dict
+sd_model = model.state_dict()
+sd_cp_model = cp_model.state_dict()
+
+sd_model['conv1.weight'] = torch.mean(sd_cp_model['conv1.weight'], dim = 1, keepdim = True)
+# update state_dict
+model.load_state_dict(sd_model)
 
 if args.cuda:
     model.cuda()
