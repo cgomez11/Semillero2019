@@ -2,9 +2,9 @@
 This is an introduction to PyTorch. We aim to cover main aspects such as tensor manipulation, Autograd, training models and some examples.
 
 
-## June 28
+## Useful tools
 
-### Screen command
+### Linux Screen 
 Screen is a terminal multiplexer. Processes running in screen will continue to run when their window is not visible even if 
 you get disconnected. 
 
@@ -51,7 +51,25 @@ screen -d session_name
 ```bash
 screen -XS session_name kill
 ```
+This short introduction was based on [How To Use Linux Screen](.https://linuxize.com/post/how-to-use-linux-screen/).
+
 ### The Python Debugger: pdb
+The module pdb defines an interactive source code debugger for Python programs. It supports setting breakpoints and single stepping at the source line level.
+
+The typical usage to break into the debugger from a running program is to insert:
+```bash
+import pdb; pdb.set_trace()
+```
+at the location you want to break into the debugger. You can then step through the code following this statement (type n), and continue running without the debugger using the continue command. If you want to quit debugging, type q. 
+
+## June 28
+Now that you are familiarized with PyTorch:
+* Create your dataloader with your own data, verify that the data is loaded correctly, that you apply the transformations, 
+and can iterate over the loaders. 
+
+* Once you have loaded your data, train a small network! you can use the one from MNIST example, or load a pretrained model
+(we will learn this today). 
+
 
 ## Acknowledgments
 Some of the basic tutorial codes are based on [jcjohnson's PyTorch basic examples](https://github.com/jcjohnson/pytorch-examples). Other sources and examples are taken directly from PyTorch documentation. 
