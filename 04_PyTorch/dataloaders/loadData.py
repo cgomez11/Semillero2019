@@ -9,7 +9,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset
 from torchvision import datasets, transforms, models, utils
 
-from dataloader import myDataset, Rescale
+from dataloader_csv import myDataset, Rescale
 
 # define batch size
 batch_size = 8
@@ -26,10 +26,12 @@ labels = np.load('labels_ids.npy').item()
 data_path =  './hymenoptera_data/'
 
 # call your dataset function
-train_dataset = myDataset(partition['train'], labels, data_path + 'train/', transform = transforms.Compose([Rescale((375, 500)), transforms.ToTensor()]))
+#train_dataset = myDataset(partition['train'], labels, data_path + 'train/', transform = transforms.Compose([Rescale((375, 500)), transforms.ToTensor()]))
+train_dataset = myDataset('train_images.csv', data_path + 'train/', transform = transforms.Compose([Rescale((375, 500)), transforms.ToTensor()]))
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size = batch_size, shuffle = True, num_workers = 4)
 
-val_dataset = myDataset(partition['val'], labels, data_path + 'val/', transform = transforms.Compose([Rescale((375, 500)), transforms.ToTensor()]))
+#val_dataset = myDataset(partition['val'], labels, data_path + 'val/', transform = transforms.Compose([Rescale((375, 500)), transforms.ToTensor()]))
+val_dataset = myDataset('val_images.csv', data_path + 'val/', transform = transforms.Compose([Rescale((375, 500)), transforms.ToTensor()]))
 val_loader = torch.utils.data.DataLoader(val_dataset, batch_size = batch_size, shuffle = True, num_workers = 4)
 
 # check the size of your datatset
