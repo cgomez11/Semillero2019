@@ -39,7 +39,7 @@ If you have multiple screen sessions running, you can find the session ID list w
 screen -ls 
 ```
 
-There is a unique number for each screen, followed by the name your assigned it. You can also
+There is a unique number for each session, followed by the name your assigned it. You can also
 check the status of each screen session (Detached or attached).
 
 * If your screen session is attached, you cannot resume with -r, you have to detach it first:
@@ -51,6 +51,7 @@ screen -d session_name
 ```bash
 screen -XS session_name kill
 ```
+### The Python Debugger: pdb
 
 ## Acknowledgments
 Some of the basic tutorial codes are based on [jcjohnson's PyTorch basic examples](https://github.com/jcjohnson/pytorch-examples). Other sources and examples are taken directly from PyTorch documentation. 
