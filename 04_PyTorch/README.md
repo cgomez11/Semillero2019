@@ -51,7 +51,7 @@ screen -d session_name
 ```bash
 screen -XS session_name kill
 ```
-This short introduction was based on [How To Use Linux Screen](.https://linuxize.com/post/how-to-use-linux-screen/).
+This short introduction was based on [How To Use Linux Screen](https://linuxize.com/post/how-to-use-linux-screen/).
 
 ### The Python Debugger: pdb
 The module pdb defines an interactive source code debugger for Python programs. It supports setting breakpoints and single stepping at the source line level.
