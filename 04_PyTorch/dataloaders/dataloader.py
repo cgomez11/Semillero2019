@@ -31,7 +31,7 @@ class myDataset(Dataset):
         # Load data and get label
         label = self.labels[ID]
         image = io.imread(self.data_path + ID)
-        image = transform.resize(image, (375,500))
+        # image = transform.resize(image, (375,500))
         if self.transform:
             image = self.transform(image)
         return image, label
