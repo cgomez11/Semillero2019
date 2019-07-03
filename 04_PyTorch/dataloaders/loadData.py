@@ -47,11 +47,11 @@ for batch_idx, (inputs, targets) in enumerate(train_loader):
 
 
 # Visualize training images
-'''
+"""
 class_names = ['bees', 'ants']
 
 def imshow(inp, title=None):
-    """Imshow for Tensor."""
+    #Imshow for Tensor
     inp = inp.numpy().transpose((1, 2, 0))
     plt.imshow(inp)
     if title is not None:
@@ -66,3 +66,4 @@ inputs, classes = next(iter(train_loader))
 out = torchvision.utils.make_grid(inputs)
 
 imshow(out, title=[class_names[x] for x in classes])
+"""
