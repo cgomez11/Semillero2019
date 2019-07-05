@@ -16,6 +16,7 @@
 # Example: check the state_dict of the following model
 import torch
 import torch.nn as nn
+import torch.optim as optim
 import torch.nn.functional as F
 
 # Define model
@@ -65,6 +66,7 @@ for var_name in optimizer.state_dict():
 
 # saving and loading a general checkpoint for inference or resume training
 # save: .tar extension
+"""
 torch.save({
             'epoch': epoch,
             'model_state_dict': model.state_dict(),
@@ -86,3 +88,4 @@ loss = checkpoint['loss']
 model.eval()
 # - or -
 model.train()
+"""
